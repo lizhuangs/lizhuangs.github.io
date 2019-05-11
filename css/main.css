@@ -1926,7 +1926,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #fbff29;
+  background: #622a09;
 }
 .feed-link,
 .chat {
@@ -2995,4 +2995,22 @@ ul.breadcrumb li+li:last-child {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+}
+input[type="checkbox"] {
+  display: none !important;
+}
+input[type="checkbox"] + label::before {
+  content: '\a0';
+  display: inline-block;
+  margin-right: 0.2em;
+  border: 1px solid;
+  border-radius: 0.2em;
+  width: 0.8em;
+  height: 0.8em;
+  vertical-align: 0.1em;
+  text-indent: 0.1em;
+  line-height: 0.7;
+}
+input[type="checkbox"]:checked + label::before {
+  content: '\2713';
 }
