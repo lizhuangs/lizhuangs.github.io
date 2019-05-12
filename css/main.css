@@ -1967,7 +1967,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #32ffff;
+  background: #16ff55;
 }
 .feed-link,
 .chat {
@@ -3047,13 +3047,15 @@ hr {
 .site-brand-wrapper {
   display: block;
 }
-.site-title {
+.site-meta .site-title {
   position: relative;
   display: inline-block;
   vertical-align: top;
   line-height: 36px;
   font-size: 48px;
   font-weight: normal;
+  font-family: 'Lobster Two', 'Roboto Slab', "PingFang SC", "Microsoft YaHei", sans-serif;
+  padding-bottom: 40px;
 }
 .site-meta {
   margin: 0;
