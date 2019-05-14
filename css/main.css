@@ -1967,7 +1967,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #16ff55;
+  background: #45e047;
 }
 .feed-link,
 .chat {
@@ -2221,6 +2221,9 @@ pre .javascript .function {
   50%, 70% {
     transform: scale(1.1);
   }
+}
+i.fa {
+  font-family: FontAwesome !important;
 }
 .local-search-pop-overlay {
   position: fixed;
@@ -2650,8 +2653,7 @@ hr {
 }
 .header-inner {
   padding: 20px 0;
-/* display: flex; */
-  display: block;
+  display: flex;
   align-items: center;
   justify-content: center;
 }
@@ -2671,7 +2673,7 @@ hr {
   }
 }
 .site-meta {
-/* float: left; */
+  float: left;
   margin-left: -20px;
   line-height: normal;
 }
@@ -2925,66 +2927,11 @@ hr {
 .links-of-blogroll-inline .links-of-blogroll-item {
   display: inline-block;
 }
-.btn {
-  padding: 0 10px;
-  border-width: 2px;
-  border-radius: 0;
+.header-inner {
+  display: block;
 }
-.headband {
-  display: none;
-}
-.site-search {
-  position: relative;
-  float: right;
-  margin-top: 5px;
-  padding-top: 3px;
-}
-@media (max-width: 767px) {
-  .site-search {
-    float: none;
-    padding: 0 10px;
-  }
-}
-@media (max-width: 767px) {
-  .container .main-inner {
-    width: auto;
-  }
-}
-.page-post-detail .post-title,
-.page-post-detail .post-meta {
-  text-align: center;
-}
-.page-post-detail .post-title:before {
-  display: none;
-}
-.page-post-detail .post-meta {
-  margin-bottom: 60px;
-}
-.pagination {
-  margin: 120px 0 0;
-  text-align: left;
-}
-@media (max-width: 767px) {
-  .pagination {
-    margin: 80px 10px 0;
-    text-align: center;
-  }
-}
-.footer {
-  margin-top: 80px;
-  padding: 10px 0;
-  background: #f5f5f5;
-  color: #666;
-}
-.footer-inner {
-  margin: 0 auto;
-  text-align: center;
-}
-@media (max-width: 767px) {
-  .footer-inner {
-    width: auto;
-    text-align: center;
-  }
+.site-meta {
+  float: none;
 }
 .headband {
   height: 1.5px;
@@ -3055,7 +3002,7 @@ hr {
   font-size: 48px;
   font-weight: normal;
   font-family: 'Lobster Two', 'Roboto Slab', "PingFang SC", "Microsoft YaHei", sans-serif;
-  padding-bottom: 40px;
+  padding-bottom: 10px;
 }
 .site-meta {
   margin: 0;
@@ -3091,4 +3038,158 @@ code {
   border-radius: 5px;
   display: inline-block;
   box-shadow: 0.4px 0.5px 0.4px 0.4px #ddd;
+}
+.menu {
+  margin-top: 20px;
+  padding-left: 0;
+  text-align: center;
+  background: rgba(255,255,255,0.65);
+  margin-left: auto;
+  margin-right: auto;
+  width: 650px;
+  border-radius: initial;
+}
+@media (max-width: 767px) {
+  .menu {
+    margin: 20px 0 0 0;
+    padding: 0;
+  }
+}
+.menu br {
+  display: none;
+}
+@media (max-width: 767px) {
+  .menu {
+    float: none;
+  }
+}
+.menu .menu-item {
+  display: inline-block;
+  margin: 0 10px;
+  list-style: none;
+}
+@media (max-width: 767px) {
+  .menu .menu-item {
+    display: block;
+  }
+}
+.menu .menu-item .badge {
+  display: inline-block;
+  padding: 1px 4px;
+  margin-left: 5px;
+  font-weight: 700;
+  line-height: 1;
+  color: rgba(0,0,0,0.9);
+  text-align: center;
+  white-space: nowrap;
+  background-color: #fff;
+  border-radius: 10px;
+  text-shadow: 1px 1px 0px rgba(0,0,0,0.1);
+}
+@media (max-width: 767px) {
+  .menu .menu-item .badge {
+    float: right;
+    margin: 0.35em 0 0 0;
+  }
+}
+@media screen and (max-width: 767px) {
+  .menu .menu-item {
+    margin-top: 10px;
+  }
+}
+.menu .menu-item a {
+  padding: 0 10px;
+  border: none;
+  border-radius: 2px;
+  transition-property: background;
+  display: block;
+  font-size: 16px;
+  text-transform: capitalize;
+  line-height: inherit;
+  border-bottom: 1px solid transparent;
+  transition-property: border-color;
+  transition-duration: 0.2s;
+  transition-timing-function: ease-in-out;
+  transition-delay: 0s;
+}
+.menu .menu-item a:hover {
+  border-bottom-color: $title-hover-bg;
+  color: $title-hover-bg;
+}
+@media (max-width: 767px) {
+  .menu .menu-item a {
+    text-align: left;
+  }
+}
+.menu .menu-item a a::before {
+  display: none;
+}
+@media (max-width: 767px) {
+  .menu .menu-item a a::before {
+    display: block;
+  }
+}
+.menu .menu-item .fa {
+  margin-right: 5px;
+}
+.btn {
+  padding: 0 10px;
+  border-width: 2px;
+  border-radius: 0;
+}
+.headband {
+  display: none;
+}
+.site-search {
+  position: relative;
+  float: right;
+  margin-top: 5px;
+  padding-top: 3px;
+}
+@media (max-width: 767px) {
+  .site-search {
+    float: none;
+    padding: 0 10px;
+  }
+}
+@media (max-width: 767px) {
+  .container .main-inner {
+    width: auto;
+  }
+}
+.page-post-detail .post-title,
+.page-post-detail .post-meta {
+  text-align: center;
+}
+.page-post-detail .post-title:before {
+  display: none;
+}
+.page-post-detail .post-meta {
+  margin-bottom: 60px;
+}
+.pagination {
+  margin: 120px 0 0;
+  text-align: left;
+}
+@media (max-width: 767px) {
+  .pagination {
+    margin: 80px 10px 0;
+    text-align: center;
+  }
+}
+.footer {
+  margin-top: 80px;
+  padding: 10px 0;
+  background: #f5f5f5;
+  color: #666;
+}
+.footer-inner {
+  margin: 0 auto;
+  text-align: center;
+}
+@media (max-width: 767px) {
+  .footer-inner {
+    width: auto;
+    text-align: center;
+  }
 }
