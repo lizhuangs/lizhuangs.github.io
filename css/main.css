@@ -1962,7 +1962,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #14fff2;
+  background: #8a62ff;
 }
 .feed-link,
 .chat {
@@ -2957,5 +2957,5 @@ code {
   font-size: 14px;
 }
 .about {
-  margin-top: -150px;
+  margin-top: -50px;
 }
