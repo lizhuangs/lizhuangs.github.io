@@ -153,7 +153,7 @@ template {
 }
 body {
   position: relative;
-  font-family: 'Lobster Two', "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-family: 'Roboto Slab', "PingFang SC", "Microsoft YaHei", sans-serif;
   font-size: 14px;
   line-height: 2;
   color: #555;
@@ -179,7 +179,7 @@ h6 {
   padding: 0;
   font-weight: bold;
   line-height: 1.5;
-  font-family: 'Roboto Slab', 'Lobster Two', "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-family: 'Roboto Slab', 'Roboto Slab', "PingFang SC", "Microsoft YaHei", sans-serif;
 }
 h1 {
   font-size: 22px;
@@ -775,8 +775,9 @@ pre .javascript .function {
   position: relative;
   padding: 15px;
   margin-bottom: 20px;
-  border: 1px solid #eee;
-  border-left-width: 5px;
+  border: initial;
+  border-left: 3px solid #eee;
+  background-color: #f9f9f9;
   border-radius: 3px;
 }
 .post-body .note h2,
@@ -816,6 +817,7 @@ pre .javascript .function {
   left: 15px;
 }
 .post-body .note.default {
+  background-color: #f7f7f7;
   border-left-color: #777;
 }
 .post-body .note.default h2,
@@ -830,6 +832,7 @@ pre .javascript .function {
   color: #777;
 }
 .post-body .note.primary {
+  background-color: #f5f0fa;
   border-left-color: #6f42c1;
 }
 .post-body .note.primary h2,
@@ -844,6 +847,7 @@ pre .javascript .function {
   color: #6f42c1;
 }
 .post-body .note.info {
+  background-color: #eef7fa;
   border-left-color: #428bca;
 }
 .post-body .note.info h2,
@@ -858,6 +862,7 @@ pre .javascript .function {
   color: #428bca;
 }
 .post-body .note.success {
+  background-color: #eff8f0;
   border-left-color: #5cb85c;
 }
 .post-body .note.success h2,
@@ -872,6 +877,7 @@ pre .javascript .function {
   color: #5cb85c;
 }
 .post-body .note.warning {
+  background-color: #fdf8ea;
   border-left-color: #f0ad4e;
 }
 .post-body .note.warning h2,
@@ -886,6 +892,7 @@ pre .javascript .function {
   color: #f0ad4e;
 }
 .post-body .note.danger {
+  background-color: #fcf1f2;
   border-left-color: #d9534f;
 }
 .post-body .note.danger h2,
@@ -923,6 +930,10 @@ pre .javascript .function {
   border-top: 3px solid transparent;
   border-left: 1px solid transparent;
   border-right: 1px solid transparent;
+  border-radius: 5px 5px 0 0;
+  transition-duration: 0.2s;
+  transition-timing-function: ease-out;
+  transition-delay: 0s;
 }
 @media (max-width: 413px) {
   .post-body .tabs ul.nav-tabs li.tab {
@@ -931,6 +942,11 @@ pre .javascript .function {
     border-left: 3px solid transparent;
     border-right: 1px solid transparent;
     border-bottom: 1px solid transparent;
+  }
+}
+@media (max-width: 413px) {
+  .post-body .tabs ul.nav-tabs li.tab {
+    border-radius: 5px;
   }
 }
 .post-body .tabs ul.nav-tabs li.tab a {
@@ -970,12 +986,21 @@ pre .javascript .function {
 .post-body .tabs .tab-content .tab-pane {
   border: 1px solid #ddd;
   padding: 20px 20px 0 20px;
+  border-radius: 5px;
 }
 .post-body .tabs .tab-content .tab-pane:not(.active) {
   display: none;
 }
 .post-body .tabs .tab-content .tab-pane.active {
   display: block;
+}
+.post-body .tabs .tab-content .tab-pane.active:nth-of-type(1) {
+  border-radius: 0 5px 5px 5px;
+}
+@media (max-width: 413px) {
+  .post-body .tabs .tab-content .tab-pane.active:nth-of-type(1) {
+    border-radius: 5px;
+  }
 }
 .btn {
   display: inline-block;
@@ -1160,7 +1185,7 @@ pre .javascript .function {
   line-height: 36px;
   font-size: 20px;
   font-weight: normal;
-  font-family: 'Lobster Two', "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-family: 'Roboto Slab', "PingFang SC", "Microsoft YaHei", sans-serif;
 }
 .site-subtitle {
   margin-top: 10px;
@@ -1316,7 +1341,7 @@ pre .javascript .function {
 .post-body {
   overflow-wrap: break-word;
   word-wrap: break-word;
-  font-family: 'Roboto Slab', 'Lobster Two', "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-family: 'Roboto Slab', 'Roboto Slab', "PingFang SC", "Microsoft YaHei", sans-serif;
 }
 .post-body span.exturl .fa {
   font-size: 14px;
@@ -1581,7 +1606,7 @@ pre .javascript .function {
 .posts-expand .post-meta {
   margin: 3px 0 60px 0;
   color: #999;
-  font-family: 'Roboto Slab', 'Lobster Two', "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-family: 'Roboto Slab', 'Roboto Slab', "PingFang SC", "Microsoft YaHei", sans-serif;
   font-size: 12px;
   text-align: center;
 }
@@ -1924,6 +1949,9 @@ pre .javascript .function {
   opacity: 1;
 }
 .site-author-image {
+  border-radius: 100%;
+}
+.site-author-image {
   transition: transform 1s ease-out;
 }
 .site-author-image:hover {
@@ -1962,7 +1990,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #d28809;
+  background: #7762c8;
 }
 .feed-link,
 .chat {
@@ -2630,6 +2658,23 @@ ul.breadcrumb li+li:last-child {
 .tag-cloud a:hover {
   color: #222 !important;
 }
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: rgba(0,0,0,0.2);
+}
+::-webkit-scrollbar-thumb:window-inactive {
+  background: rgba(0,0,0,0.1);
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(0,0,0,0.3);
+}
+::-webkit-scrollbar-thumb:active {
+  background-color: rgba(0,0,0,0.4);
+}
 @media (max-width: 767px) {
   .header-inner,
   .container .main-inner,
@@ -2812,23 +2857,13 @@ embed {
 .site-brand-wrapper {
   display: block;
 }
-.site-meta .site-title {
-  position: relative;
-  display: inline-block;
-  padding-bottom: 10px;
-  vertical-align: top;
-  font-weight: normal;
+.site-title {
   font-size: 48px;
-  line-height: 36px;
+  font-family: 'Lobster Two', 'Roboto Slab', "PingFang SC", "Microsoft YaHei", sans-serif;
 }
 .site-meta {
   margin: 0;
   text-align: center;
-}
-@media (max-width: 767px) {
-  .site-meta {
-    text-align: center;
-  }
 }
 .brand {
   padding: 0 40px;
@@ -2859,48 +2894,13 @@ code {
   margin-top: 20px;
   margin-right: auto;
   margin-left: auto;
+  padding: 3px 0;
   padding-left: 0;
-  width: 640px;
-  border-radius: initial;
+  width: 520px;
   background: rgba(255,255,255,0.65);
-  text-align: center;
-}
-@media (max-width: 767px) {
-  .menu {
-    margin: 20px 0 0;
-    padding: 0;
-  }
 }
 .menu br {
   display: none;
-}
-@media (max-width: 767px) {
-  .menu {
-    float: none;
-  }
-}
-.menu .menu-item {
-  display: inline-block;
-  margin: 0 10px;
-  list-style: none;
-}
-@media (max-width: 767px) {
-  .menu .menu-item {
-    display: block;
-  }
-}
-.menu .menu-item .badge {
-  display: inline-block;
-  margin-left: 5px;
-  padding: 1px 4px;
-  border-radius: 10px;
-  background-color: #fff;
-  color: rgba(0,0,0,0.9);
-  text-align: center;
-  text-shadow: 1px 1px 0 rgba(0,0,0,0.1);
-  white-space: nowrap;
-  font-weight: 700;
-  line-height: 1;
 }
 @media screen and (max-width: 767px) {
   .menu .menu-item {
@@ -2908,28 +2908,21 @@ code {
   }
 }
 .menu .menu-item a {
-  display: block;
-  padding: 0 10px;
   border: none;
-  border-bottom: 1px solid transparent;
-  border-radius: 2px;
-  text-transform: capitalize;
   font-size: 16px;
-  line-height: inherit;
-  transition-delay: 0s;
-  transition-timing-function: ease-in-out;
-  transition-duration: 0.2s;
-  transition-property: background;
-  transition-property: border-color;
-}
-.menu .menu-item a:hover {
-  border-bottom-color: $title-hover-bg;
-  color: $title-hover-bg;
-}
-.menu .menu-item a a::before {
-  display: none;
 }
 @media (max-width: 767px) {
+  .menu {
+    float: none;
+    margin: 20px 0 0;
+    padding: 0;
+  }
+  .site-meta {
+    text-align: center;
+  }
+  .menu .menu-item {
+    display: block;
+  }
   .menu .menu-item a {
     text-align: left;
   }
@@ -2952,9 +2945,6 @@ code {
   color: #fff;
   font-size: 14px;
 }
-.about {
-  margin-top: -50px;
-}
 @media (max-width: 567px) {
   .header-inner {
     margin-bottom: initial !important;
@@ -2966,8 +2956,8 @@ code {
     padding: initial !important;
   }
   .posts-expand {
-    padding-top: 8px !important;
     margin: initial !important;
+    padding-top: 8px !important;
   }
   .posts-expand .post-header {
     padding: 0 18px;
@@ -2998,7 +2988,7 @@ code {
     margin: 0 5px;
   }
   .post-body p {
-    margin: 0 0 10px 0;
+    margin: 0 0 10px;
     padding: 0 18px;
   }
   .post-body .note > p,
@@ -3009,8 +2999,8 @@ code {
     margin-bottom: 10px !important;
   }
   .post-body .note {
-    padding: 10px !important;
     margin-bottom: 10px !important;
+    padding: 10px !important;
   }
   .post-body .tabs .tab-content .tab-pane {
     padding: 10px 10px 0 10px !important;
