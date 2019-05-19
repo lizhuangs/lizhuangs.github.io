@@ -165,18 +165,18 @@
 
 
 
-  <meta name="description" content="服务端redhat &amp;amp;　centos服务端yum install -y nfs-utils rpcbind ubuntu &amp;amp; debian &amp;amp; deepin搜索nfs-开头的软件apt-cache search nfs- 服务端apt install nfs-kernel-server">
+  <meta name="description" content="服务端redhat &amp;　centos服务端yum install -y nfs-utils rpcbind ubuntu &amp; debian &amp; deepin搜索nfs-开头的软件apt-cache search nfs- 服务端apt install nfs-kernel-server">
 <meta name="keywords" content="linux,nfs">
 <meta property="og:type" content="article">
 <meta property="og:title" content="nfs安装">
 <meta property="og:url" content="http://lizhuangs.github.io/2019/05/12/nfs安装/index.html">
 <meta property="og:site_name" content="tudou&#39;s Blog">
-<meta property="og:description" content="服务端redhat &amp;amp;　centos服务端yum install -y nfs-utils rpcbind ubuntu &amp;amp; debian &amp;amp; deepin搜索nfs-开头的软件apt-cache search nfs- 服务端apt install nfs-kernel-server">
+<meta property="og:description" content="服务端redhat &amp;　centos服务端yum install -y nfs-utils rpcbind ubuntu &amp; debian &amp; deepin搜索nfs-开头的软件apt-cache search nfs- 服务端apt install nfs-kernel-server">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-05-18T08:52:01.556Z">
+<meta property="og:updated_time" content="2019-05-19T14:25:55.590Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="nfs安装">
-<meta name="twitter:description" content="服务端redhat &amp;amp;　centos服务端yum install -y nfs-utils rpcbind ubuntu &amp;amp; debian &amp;amp; deepin搜索nfs-开头的软件apt-cache search nfs- 服务端apt install nfs-kernel-server">
+<meta name="twitter:description" content="服务端redhat &amp;　centos服务端yum install -y nfs-utils rpcbind ubuntu &amp; debian &amp; deepin搜索nfs-开头的软件apt-cache search nfs- 服务端apt install nfs-kernel-server">
 
 
 
@@ -599,28 +599,28 @@
       
 
       
-        <h1 id="服务端"><a href="#服务端" class="headerlink" title="服务端"></a>服务端</h1><h2 id="redhat-amp-centos"><a href="#redhat-amp-centos" class="headerlink" title="redhat &amp;　centos"></a>redhat &amp;　centos</h2><p>服务端<br><code>yum install -y nfs-utils rpcbind</code></p>
-<h2 id="ubuntu-amp-debian-amp-deepin"><a href="#ubuntu-amp-debian-amp-deepin" class="headerlink" title="ubuntu &amp; debian &amp; deepin"></a>ubuntu &amp; debian &amp; deepin</h2><p>搜索nfs-开头的软件<br><code>apt-cache search nfs-</code></p>
+        <h1 id="服务端"><a href="#服务端" class="headerlink" title="服务端"></a>服务端</h1><h2 id="redhat-amp-centos"><a href="#redhat-amp-centos" class="headerlink" title="redhat &　centos"></a>redhat &　centos</h2><p>服务端<br><code>yum install -y nfs-utils rpcbind</code></p>
+<h2 id="ubuntu-amp-debian-amp-deepin"><a href="#ubuntu-amp-debian-amp-deepin" class="headerlink" title="ubuntu & debian & deepin"></a>ubuntu & debian & deepin</h2><p>搜索nfs-开头的软件<br><code>apt-cache search nfs-</code></p>
 <p>服务端<br><code>apt install nfs-kernel-server</code></p>
 <a id="more"></a>
-<h2 id="共享目录"><a href="#共享目录" class="headerlink" title="共享目录"></a>共享目录</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p /data/nfs/share</span><br><span class="line">sudo chmod 666 /data/nfs/share</span><br></pre></td></tr></table></figure>
+<h2 id="共享目录"><a href="#共享目录" class="headerlink" title="共享目录"></a>共享目录</h2><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p /data/nfs/share</span><br><span class="line">sudo chmod 666 /data/nfs/share</span><br></pre></td></tr></tbody></table></figure>
 
-<h2 id="NFS配置文件"><a href="#NFS配置文件" class="headerlink" title="NFS配置文件"></a>NFS配置文件</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/exports</span><br><span class="line">/data/nfs/share 192.168.45.0/24(rw,sync,insecure,no_subtree_check,no_root_squash)</span><br><span class="line">/data/nfs/share 192.168.20.0/24(rw,sync,insecure,no_subtree_check,no_root_squash)</span><br></pre></td></tr></table></figure>
+<h2 id="NFS配置文件"><a href="#NFS配置文件" class="headerlink" title="NFS配置文件"></a>NFS配置文件</h2><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/exports</span><br><span class="line">/data/nfs/share 192.168.45.0/24(rw,sync,insecure,no_subtree_check,no_root_squash)</span><br><span class="line">/data/nfs/share 192.168.20.0/24(rw,sync,insecure,no_subtree_check,no_root_squash)</span><br></pre></td></tr></tbody></table></figure>
 
 <p>格式： 共享目录 客户机ip 共享方式(ro,rw) ro:只读 rw:读写 sync:同步 async:异步（默认）</p>
 <p>/share <em>(ro, sync) # ‘</em>’表示所有ip<br>/share 192.168.2.250(rw, sync) </p>
 <p>deepin linux:<br>(rw,sync,no_root_squash,no_subtree_check)</p>
-<h2 id="启动-RPC-服务"><a href="#启动-RPC-服务" class="headerlink" title="启动 RPC 服务"></a>启动 RPC 服务</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">service rpcbind start</span><br><span class="line">或</span><br><span class="line">/bin/systemctl start rpcbind.service</span><br></pre></td></tr></table></figure>
+<h2 id="启动-RPC-服务"><a href="#启动-RPC-服务" class="headerlink" title="启动 RPC 服务"></a>启动 RPC 服务</h2><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">service rpcbind start</span><br><span class="line">或</span><br><span class="line">/bin/systemctl start rpcbind.service</span><br></pre></td></tr></tbody></table></figure>
 
 <p>查看 NFS 服务项 rpc 服务器注册的端口列表，有些系统需要sudo</p>
 <p>sudo rpcinfo -p localhost</p>
 <p>或</p>
 <p>sudo rpcinfo -p localhost | grep nfs</p>
-<h2 id="启动-NFS-服务"><a href="#启动-NFS-服务" class="headerlink" title="启动 NFS 服务"></a>启动 NFS 服务</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo service nfs-server start</span><br><span class="line">或</span><br><span class="line">sudo /bin/systemctl start nfs-server.service</span><br></pre></td></tr></table></figure>
+<h2 id="启动-NFS-服务"><a href="#启动-NFS-服务" class="headerlink" title="启动 NFS 服务"></a>启动 NFS 服务</h2><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo service nfs-server start</span><br><span class="line">或</span><br><span class="line">sudo /bin/systemctl start nfs-server.service</span><br></pre></td></tr></tbody></table></figure>
 
 <p>再查看一下rpcinfo -p localhost，可以看到有nfs了。</p>
 <p>如何知道nfs service名字</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">sudo service --status-all | grep nfs</span><br><span class="line">结果：</span><br><span class="line"> [ - ]  nfs-common</span><br><span class="line"> [ + ]  nfs-kernel-server</span><br><span class="line"> 也可以</span><br><span class="line"> <span class="built_in">cd</span> /lib/systemd/system/</span><br><span class="line"> ll |grep nfs</span><br><span class="line"> 结果：</span><br><span class="line"> nfs-kernel-server.service -&gt; nfs-server.service</span><br><span class="line"> nfs-server.service</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">sudo service --status-all | grep nfs</span><br><span class="line">结果：</span><br><span class="line"> [ - ]  nfs-common</span><br><span class="line"> [ + ]  nfs-kernel-server</span><br><span class="line"> 也可以</span><br><span class="line"> <span class="built_in">cd</span> /lib/systemd/system/</span><br><span class="line"> ll |grep nfs</span><br><span class="line"> 结果：</span><br><span class="line"> nfs-kernel-server.service -> nfs-server.service</span><br><span class="line"> nfs-server.service</span><br></pre></td></tr></tbody></table></figure>
 
 <p> 也就是说 nfs-kernel-server也可以，简写就是nfs-server。</p>
 <h2 id="检查NFS配置"><a href="#检查NFS配置" class="headerlink" title="检查NFS配置"></a>检查NFS配置</h2><blockquote>
@@ -632,11 +632,11 @@
 <p>sudo exportfs -rv</p>
 </blockquote>
 <p>当然修改后，你也可以重启nfs服务</p>
-<h2 id="开机自启"><a href="#开机自启" class="headerlink" title="开机自启"></a>开机自启</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo chkconfig rpcbind on</span><br><span class="line">sudo chkconfig nfs-server on</span><br><span class="line">或</span><br><span class="line">sudo systemctl <span class="built_in">enable</span> rpcbind</span><br><span class="line">sudo systemctl <span class="built_in">enable</span> nfs-server</span><br></pre></td></tr></table></figure>
+<h2 id="开机自启"><a href="#开机自启" class="headerlink" title="开机自启"></a>开机自启</h2><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo chkconfig rpcbind on</span><br><span class="line">sudo chkconfig nfs-server on</span><br><span class="line">或</span><br><span class="line">sudo systemctl <span class="built_in">enable</span> rpcbind</span><br><span class="line">sudo systemctl <span class="built_in">enable</span> nfs-server</span><br></pre></td></tr></tbody></table></figure>
 
 <p>查看服务是否开机启动,支掉-a只显示active<br>sudo systemctl -la |grep rpc<br>sudo systemctl -la |grep nfs-</p>
 <h1 id="客户端"><a href="#客户端" class="headerlink" title="客户端"></a>客户端</h1><p>一般服务端安装完了，本地就有客户端</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install nfs-common</span><br><span class="line">或</span><br><span class="line">sudo yum install -y nfs-utils</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install nfs-common</span><br><span class="line">或</span><br><span class="line">sudo yum install -y nfs-utils</span><br></pre></td></tr></tbody></table></figure>
 
 <h2 id="查看目标地址共享目录"><a href="#查看目标地址共享目录" class="headerlink" title="查看目标地址共享目录"></a>查看目标地址共享目录</h2><blockquote>
 <p>showmount -e 192.168.20.110</p>
@@ -654,19 +654,37 @@
 <h2 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h2><p>查看目录挂载<br>df -h</p>
 <p>服务端执行<br>sudo touch /data/nfs/share/test<br>vim /data/nfs/share/test<br>‘Welcome to NFS server’  </p>
 <p>注意以下这种没有成功，因为share目录无法进入，权限是666，但是可以通过vi使用。</p>
-<p>#sudo echo ‘Welcome to NFS server’ &gt; /data/nfs/share/test</p>
+<p>#sudo echo ‘Welcome to NFS server’ > /data/nfs/share/test</p>
 <p>在客户端验证并写入</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vim /data/nfs/client/<span class="built_in">test</span></span><br><span class="line">Welcome to NFS server</span><br><span class="line">come from client</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vim /data/nfs/client/<span class="built_in">test</span></span><br><span class="line">Welcome to NFS server</span><br><span class="line">come from client</span><br></pre></td></tr></tbody></table></figure>
 
 <p>服务端验证<br>vim /data/nfs/share/test</p>
-<h2 id="实现开机自动挂载"><a href="#实现开机自动挂载" class="headerlink" title="实现开机自动挂载"></a>实现开机自动挂载</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/fstab  </span><br><span class="line">192.168.20.110:/data/nfs/share /data/nfs/client nfs defaults 0 0</span><br><span class="line"><span class="comment">#192.168.1.3:/nfs_test /mnt/test1 nfs rw,tcp,intr 0 1</span></span><br></pre></td></tr></table></figure>
+<h2 id="实现开机自动挂载"><a href="#实现开机自动挂载" class="headerlink" title="实现开机自动挂载"></a>实现开机自动挂载</h2><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/fstab  </span><br><span class="line">192.168.20.110:/data/nfs/share /data/nfs/client nfs defaults 0 0</span><br><span class="line"><span class="comment">#192.168.1.3:/nfs_test /mnt/test1 nfs rw,tcp,intr 0 1</span></span><br></pre></td></tr></tbody></table></figure>
 
 <h2 id="固定nfs服务端口"><a href="#固定nfs服务端口" class="headerlink" title="固定nfs服务端口"></a>固定nfs服务端口</h2><p>NFS启动时会随机启动多个端口并向RPC注册，这样如果使用iptables对NFS端口进行限制就会有点麻烦，可以更改配置文件固定NFS服务相关端口。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/sysconfig/nfs</span><br><span class="line">RQUOTAD_PORT=30001</span><br><span class="line">LOCKD_TCPPORT=30002</span><br><span class="line">LOCKD_UDPPORT=30002</span><br><span class="line">MOUNTD_PORT=30003</span><br><span class="line">STATD_PORT=30004</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/sysconfig/nfs</span><br><span class="line">RQUOTAD_PORT=30001</span><br><span class="line">LOCKD_TCPPORT=30002</span><br><span class="line">LOCKD_UDPPORT=30002</span><br><span class="line">MOUNTD_PORT=30003</span><br><span class="line">STATD_PORT=30004</span><br></pre></td></tr></tbody></table></figure>
 
 <p>重启<br>service nfs-server restart</p>
 <p>查看结果<br>rpcinfo -p localhost</p>
-
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
       
     </div>
 
@@ -759,7 +777,7 @@
   </li>
   <li class="post-copyright-author">
     <strong>最后更新:</strong>
-    2019年05月18日 - 16:05
+    2019年05月19日 - 22:05
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
@@ -1076,18 +1094,6 @@
 
       
 
-      
-      <script type="text/javascript" charset="utf-8" src="/js/tagcloud.js"></script>
-      <script type="text/javascript" charset="utf-8" src="/js/tagcanvas.js"></script>
-      <div class="widget-wrap">
-          <div id="myCanvasContainer" class="widget tagcloud">
-              <canvas width="250" height="250" id="resCanvas" style="width=100%">
-                  <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Games/">Games</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PS3/">PS3</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/">docker</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker-compose/">docker-compose</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown/">markdown</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nfs/">nfs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随笔/">随笔</a><span class="tag-list-count">1</span></li></ul>
-              </canvas>
-          </div>
-      </div>
-      
-
     </div>
   </aside>
   
@@ -1292,7 +1298,7 @@
     appId: 'otqPeg76YvysgXfg0AoRfxkW-gzGzoHsz',
     appKey: 'R6kjizLhwrr3J7cImLdbXeTr',
     placeholder: '请带上邮箱留言、我收到可能回复呃 o(∩_∩)o ~ 如果你是程序员，可以使用最下面的github账号留言也可以哦~',
-    avatar: 'mm',
+    avatar: 'mp',
     meta: guest,
     pageSize: '10' || 10,
     visitor: true,

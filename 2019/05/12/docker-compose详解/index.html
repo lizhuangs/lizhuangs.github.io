@@ -173,7 +173,7 @@
 <meta property="og:site_name" content="tudou&#39;s Blog">
 <meta property="og:description" content="固定容器compose会查找之前的容器，把旧容器的volume-data拷贝到容器中。除非手动用docker rm命令删除容器，否则CONTAINER ID不会发生改变。  版本   Compose file format Docker Engine    1 1.9.0+   2.0 1.10.0+   2.1 1.12.0+   2.2, 3.0, 3.1, 3.2 1.13.0+   2.3">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-05-18T05:11:34.592Z">
+<meta property="og:updated_time" content="2019-05-19T13:36:41.682Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="docker-compose详解">
 <meta name="twitter:description" content="固定容器compose会查找之前的容器，把旧容器的volume-data拷贝到容器中。除非手动用docker rm命令删除容器，否则CONTAINER ID不会发生改变。  版本   Compose file format Docker Engine    1 1.9.0+   2.0 1.10.0+   2.1 1.12.0+   2.2, 3.0, 3.1, 3.2 1.13.0+   2.3">
@@ -653,12 +653,12 @@
 <li>networks 的定义类似于命令行的 docker network create</li>
 <li>volumes 的定义类似于命令行的 docker volume create</li>
 </ol>
-<h2 id="顶级配置"><a href="#顶级配置" class="headerlink" title="顶级配置"></a>顶级配置</h2><h3 id="container-name"><a href="#container-name" class="headerlink" title="container_name"></a>container_name</h3><p>指定容器名称。Compose 的容器默认名称格式是：&lt;项目名称&gt;&lt;服务名称&gt;&lt;序号&gt;</p>
+<h2 id="顶级配置"><a href="#顶级配置" class="headerlink" title="顶级配置"></a>顶级配置</h2><h3 id="container-name"><a href="#container-name" class="headerlink" title="container_name"></a>container_name</h3><p>指定容器名称。Compose 的容器默认名称格式是：<项目名称><服务名称><序号></序号></服务名称></项目名称></p>
 <blockquote>
 <p>注意: 指定容器名称后，该服务将无法进行扩展（scale），因为 Docker 不允许多个容器具有相同的名称</p>
 </blockquote>
 <h3 id="labels"><a href="#labels" class="headerlink" title="labels"></a>labels</h3><p>为容器添加 Docker 元数据（metadata）信息。例如可以为容器添加辅助说明信息</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">labels:</span><br><span class="line">  com.startupteam.description: &quot;webapp for a startup team&quot;</span><br><span class="line">  com.startupteam.department: &quot;devops department&quot;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">labels:</span><br><span class="line">  com.startupteam.description: "webapp for a startup team"</span><br><span class="line">  com.startupteam.department: "devops department"</span><br></pre></td></tr></tbody></table></figure>
 
 <h3 id="构建时应用的配置选项"><a href="#构建时应用的配置选项" class="headerlink" title="构建时应用的配置选项"></a>构建时应用的配置选项</h3><blockquote>
 <p>注意每个服务都必须通过 image 指令指定镜像或 build 指令（需要 Dockerfile）等来自动构建生成镜像</p>
@@ -668,14 +668,14 @@
 </blockquote>
 <h4 id="build"><a href="#build" class="headerlink" title="build"></a>build</h4><p>指定 Dockerfile 所在文件夹的路径（可以是绝对路径，或者相对 docker-compose.yml 文件的路径）。 Compose 将会利用它自动构建这个镜像，然后使用这个镜像。</p>
 <p>类似于命令行的 docker build .</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">version: &apos;3&apos;</span><br><span class="line">services:</span><br><span class="line">  webapp:</span><br><span class="line">    build: .</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">version: '3'</span><br><span class="line">services:</span><br><span class="line">  webapp:</span><br><span class="line">    build: .</span><br></pre></td></tr></tbody></table></figure>
 
 <h5 id="context"><a href="#context" class="headerlink" title="context"></a>context</h5><p>指定 Dockerfile 所在文件夹的路径</p>
 <h5 id="dockerfile"><a href="#dockerfile" class="headerlink" title="dockerfile"></a>dockerfile</h5><p>指定 Dockerfile 文件名</p>
 <h5 id="args"><a href="#args" class="headerlink" title="args"></a>args</h5><p>类似Dockerfile 中的 ARG 指令，它可以在构建过程中指定环境变量，但是在构建成功后消失</p>
 <h5 id="context-1"><a href="#context-1" class="headerlink" title="context"></a>context</h5><p>指定 Dockerfile 所在文件夹的路径</p>
 <p>一个build配置的示例：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">version: &apos;3&apos;</span><br><span class="line">services:</span><br><span class="line">  serviceXXX:</span><br><span class="line">    build:</span><br><span class="line">      context: ./config</span><br><span class="line">      dockerfile: My_Dockerfile</span><br><span class="line">      args:</span><br><span class="line">        buildno: 1</span><br><span class="line">        password: secret</span><br><span class="line">        #一般下面这种写法</span><br><span class="line">        - buildno=1</span><br><span class="line">        - password=secret</span><br><span class="line">        #与env不同,arg允许空值</span><br><span class="line">        - buildno</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">version: '3'</span><br><span class="line">services:</span><br><span class="line">  serviceXXX:</span><br><span class="line">    build:</span><br><span class="line">      context: ./config</span><br><span class="line">      dockerfile: My_Dockerfile</span><br><span class="line">      args:</span><br><span class="line">        buildno: 1</span><br><span class="line">        password: secret</span><br><span class="line">        #一般下面这种写法</span><br><span class="line">        - buildno=1</span><br><span class="line">        - password=secret</span><br><span class="line">        #与env不同,arg允许空值</span><br><span class="line">        - buildno</span><br></pre></td></tr></tbody></table></figure>
 
 <h4 id="image"><a href="#image" class="headerlink" title="image"></a>image</h4><p>指定为镜像名称或镜像 ID。如果镜像在本地不存在，Compose 将会尝试拉取这个镜像</p>
 <blockquote>
@@ -686,21 +686,21 @@
 <p>也可以写成类似 Dockerfile 中的格式：</p>
 <p><code>command: [bundle, exec, thin, -p, 3000]</code></p>
 <h4 id="depends-on"><a href="#depends-on" class="headerlink" title="depends_on"></a>depends_on</h4><p>解决容器的依赖、启动先后的问题。以下例子中会先启动 redis db 再启动 web</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">version: &apos;3&apos;</span><br><span class="line">services:</span><br><span class="line">  web:</span><br><span class="line">    build: .</span><br><span class="line">    depends_on:</span><br><span class="line">      - db</span><br><span class="line">      - redis</span><br><span class="line">  redis:</span><br><span class="line">    image: redis</span><br><span class="line">  db:</span><br><span class="line">    image: postgres</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">version: '3'</span><br><span class="line">services:</span><br><span class="line">  web:</span><br><span class="line">    build: .</span><br><span class="line">    depends_on:</span><br><span class="line">      - db</span><br><span class="line">      - redis</span><br><span class="line">  redis:</span><br><span class="line">    image: redis</span><br><span class="line">  db:</span><br><span class="line">    image: postgres</span><br></pre></td></tr></tbody></table></figure>
 
 <blockquote>
 <p>注意：web 服务不会等待redis和db完全启动之后才启动，它是容器启动后就启动，里面的服务有可能还没有起来。</p>
 </blockquote>
 <p>解决办法：<br>一个方面是在连接层面使用自动重连策略，比如mysql jdbc可以有auto reconnect自动重连参数。或者使用下面建议的用一个脚本（wait-for-it.sh）来探测依赖服务已经完全准备好,或者自己编写一个health check脚本来检测依赖服务的健康状况来判断依赖服务是否启动完成。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">!/bin/bash</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> <span class="built_in">wait</span>-for-postgres.sh</span></span><br><span class="line">set -e</span><br><span class="line">host="$1"</span><br><span class="line">shift</span><br><span class="line">cmd="$@"</span><br><span class="line">until psql -h "$host" -U "postgres" -c '\q'; do</span><br><span class="line"><span class="meta">  &gt;</span><span class="bash">&amp;2 <span class="built_in">echo</span> <span class="string">"Postgres is unavailable - sleeping"</span></span></span><br><span class="line">  sleep 1</span><br><span class="line">done</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&amp;2 <span class="built_in">echo</span> <span class="string">"Postgres is up - executing command"</span></span></span><br><span class="line">exec $cmd</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">!/bin/bash</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> <span class="built_in">wait</span>-for-postgres.sh</span></span><br><span class="line">set -e</span><br><span class="line">host="$1"</span><br><span class="line">shift</span><br><span class="line">cmd="$@"</span><br><span class="line">until psql -h "$host" -U "postgres" -c '\q'; do</span><br><span class="line"><span class="meta">  ></span><span class="bash">&2 <span class="built_in">echo</span> <span class="string">"Postgres is unavailable - sleeping"</span></span></span><br><span class="line">  sleep 1</span><br><span class="line">done</span><br><span class="line"><span class="meta">></span><span class="bash">&2 <span class="built_in">echo</span> <span class="string">"Postgres is up - executing command"</span></span></span><br><span class="line">exec $cmd</span><br></pre></td></tr></tbody></table></figure>
 
 <p>command: [“./wait-for-postgres.sh”, “db”, “python”, “app.py”]<br>注意如果你使用wait-for-it.sh脚本，如果你的基础镜像不包含bash命令（比如alpine镜像）需要安装bash,不然没法执行wait-for-it.sh脚本导致容器启动失败。</p>
 <p>如果Dockerfile的基础镜像用的是alpine相关的基础镜像的话，记得添加如下指令安装bash:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">RUN apk update</span><br><span class="line">RUN apk upgrade</span><br><span class="line">RUN apk add --no-cache bash</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">RUN apk update</span><br><span class="line">RUN apk upgrade</span><br><span class="line">RUN apk add --no-cache bash</span><br></pre></td></tr></tbody></table></figure>
 
 <h4 id="environment"><a href="#environment" class="headerlink" title="environment"></a>environment</h4><p>设置环境变量。你可以使用数组或字典两种格式。</p>
 <p>只给定名称的变量会自动获取运行 Compose 主机上对应变量的值，可以用来防止泄露不必要的数据。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">version: &apos;3.5&apos;</span><br><span class="line">services:</span><br><span class="line">    tomcat_idocv_veiw_rjy:</span><br><span class="line">        image: XXX</span><br><span class="line">        environment:</span><br><span class="line">            - VIRTUAL_HOST=tomcat_idocv_veiw_rjy</span><br><span class="line">            - VIRTUAL_PORT=8080</span><br><span class="line">            - VIRTUAL_NAME=nginx_idocv_veiw_rjy</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">version: '3.5'</span><br><span class="line">services:</span><br><span class="line">    tomcat_idocv_veiw_rjy:</span><br><span class="line">        image: XXX</span><br><span class="line">        environment:</span><br><span class="line">            - VIRTUAL_HOST=tomcat_idocv_veiw_rjy</span><br><span class="line">            - VIRTUAL_PORT=8080</span><br><span class="line">            - VIRTUAL_NAME=nginx_idocv_veiw_rjy</span><br></pre></td></tr></tbody></table></figure>
 
 <p>YAML中如果变量名称或者值中用到 true|false，yes|no 等表达布尔 含义的词汇，最好放到引号（单双均可）里，避免 YML 自动解析某些内容为对应的布尔语义。这些特定词汇，包括</p>
 <blockquote>
@@ -708,81 +708,99 @@
 </blockquote>
 <h4 id="expose"><a href="#expose" class="headerlink" title="expose"></a>expose</h4><p>暴露端口，但不映射到宿主机，只被连接的服务访问。</p>
 <p>仅可以指定容器内部的端口为参数</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">expose:</span><br><span class="line"> - &quot;3000&quot;</span><br><span class="line"> - &quot;8000&quot;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">expose:</span><br><span class="line"> - "3000"</span><br><span class="line"> - "8000"</span><br></pre></td></tr></tbody></table></figure>
 
 <h4 id="ports"><a href="#ports" class="headerlink" title="ports"></a>ports</h4><p>暴露端口信息</p>
 <p>使用宿主端口：容器端口 (HOST:CONTAINER) 格式，或者仅仅指定容器的端口（宿主将会随机选择端口）都可以</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ports:</span><br><span class="line"> - &quot;3000&quot;</span><br><span class="line"> - &quot;8000:8000&quot;</span><br><span class="line"> - &quot;49100:22&quot;</span><br><span class="line"> - &quot;127.0.0.1:8001:8001&quot;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ports:</span><br><span class="line"> - "3000"</span><br><span class="line"> - "8000:8000"</span><br><span class="line"> - "49100:22"</span><br><span class="line"> - "127.0.0.1:8001:8001"</span><br></pre></td></tr></tbody></table></figure>
 
 <blockquote>
 <p>注意：当使用 HOST:CONTAINER 格式来映射端口时，如果你使用的容器端口小于 60 并且没放到引号里，可能会得到错误结果，因为 YAML 会自动解析 xx:yy 这种数字格式为 60 进制。为避免出现这种问题，建议数字串都采用引号包括起来的字符串格式</p>
 </blockquote>
 <h4 id="expose-1"><a href="#expose-1" class="headerlink" title="expose"></a>expose</h4><p>暴露端口，但不映射到宿主机，只被连接的服务访问。暴露给连接的服务，而不暴露给主机</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">expose:</span><br><span class="line">    - &quot;3000&quot;</span><br><span class="line">    - &quot;8000&quot;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">expose:</span><br><span class="line">    - "3000"</span><br><span class="line">    - "8000"</span><br></pre></td></tr></tbody></table></figure>
 
 <h4 id="env-file"><a href="#env-file" class="headerlink" title="env_file"></a>env_file</h4><p>从文件中获取环境变量，可以指定一个文件路径或路径列表，其优先级低于 environment 指定的环境变量<br>如果在配置文件中有build操作，变量并不会进入构建过程中。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">env_file: .env</span><br><span class="line">---------------</span><br><span class="line">env_file:</span><br><span class="line">    - ./common.env</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">env_file: .env</span><br><span class="line">---------------</span><br><span class="line">env_file:</span><br><span class="line">    - ./common.env</span><br></pre></td></tr></tbody></table></figure>
 
 <h4 id="links"><a href="#links" class="headerlink" title="links"></a>links</h4><p>将指定容器连接到当前连接，可以设置别名，避免ip方式导致的容器重启动态改变的无法连接情况</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">links:    # 指定服务名称:别名 </span><br><span class="line">    - docker-compose-eureka-server:compose-eureka</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">links:    # 指定服务名称:别名 </span><br><span class="line">    - docker-compose-eureka-server:compose-eureka</span><br></pre></td></tr></tbody></table></figure>
 
 <h4 id="volumes卷挂载路径"><a href="#volumes卷挂载路径" class="headerlink" title="volumes卷挂载路径"></a>volumes卷挂载路径</h4><p>设置网络模式</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">volumes:</span><br><span class="line">  - /lib</span><br><span class="line">  - /var</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">volumes:</span><br><span class="line">  - /lib</span><br><span class="line">  - /var</span><br></pre></td></tr></tbody></table></figure>
 
 <h4 id="dns"><a href="#dns" class="headerlink" title="dns"></a>dns</h4><p>配置 dns 服务器，可以是一个值或列表</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">dns: 8.8.8.8</span><br><span class="line">------------</span><br><span class="line">dns:</span><br><span class="line">    - 8.8.8.8</span><br><span class="line">    - 9.9.9.9</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">dns: 8.8.8.8</span><br><span class="line">------------</span><br><span class="line">dns:</span><br><span class="line">    - 8.8.8.8</span><br><span class="line">    - 9.9.9.9</span><br></pre></td></tr></tbody></table></figure>
 
 <h4 id="extra-hosts"><a href="#extra-hosts" class="headerlink" title="extra_hosts"></a>extra_hosts</h4><p>添加主机名的标签，会在/etc/hosts文件中添加一些记录。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">extra_hosts:</span><br><span class="line"> - &quot;somehost:162.242.195.82&quot;</span><br><span class="line"> - &quot;otherhost:50.31.209.229&quot;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">extra_hosts:</span><br><span class="line"> - "somehost:162.242.195.82"</span><br><span class="line"> - "otherhost:50.31.209.229"</span><br></pre></td></tr></tbody></table></figure>
 
 <h4 id="volumes-from"><a href="#volumes-from" class="headerlink" title="volumes_from"></a>volumes_from</h4><p>从另一个服务或容器挂载其数据卷</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">volumes_from:</span><br><span class="line">   - service_name    </span><br><span class="line">     - container_name</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">volumes_from:</span><br><span class="line">   - service_name    </span><br><span class="line">     - container_name</span><br></pre></td></tr></tbody></table></figure>
 
 <h4 id="entrypoint"><a href="#entrypoint" class="headerlink" title="entrypoint"></a>entrypoint</h4><p>在Dockerfile中有一个指令叫做ENTRYPOINT指令，用于指定接入点。<br>在docker-compose.yml中可以定义接入点，覆盖Dockerfile中的定义：<br>entrypoint: /code/entrypoint.sh</p>
 <h4 id="cap-add"><a href="#cap-add" class="headerlink" title="cap_add"></a>cap_add</h4><p>增加指定容器的内核能力（capacity）。<br>让容器具有所有能力可以指定</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cap_add:</span><br><span class="line">    - ALL</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cap_add:</span><br><span class="line">    - ALL</span><br></pre></td></tr></tbody></table></figure>
 
 <h4 id="cap-drop"><a href="#cap-drop" class="headerlink" title="cap_drop"></a>cap_drop</h4><p>去掉指定容器的内核能力（capacity）。<br>去掉NET_ADMIN能力可以指定：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cap_drop:</span><br><span class="line">    - NET_ADMIN</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cap_drop:</span><br><span class="line">    - NET_ADMIN</span><br></pre></td></tr></tbody></table></figure>
 
 <h4 id="cgroup-parent"><a href="#cgroup-parent" class="headerlink" title="cgroup_parent"></a>cgroup_parent</h4><p>创建了一个cgroup组名称为cgroups_1:<br>cgroup_parent: cgroups_1</p>
 <h4 id="devices"><a href="#devices" class="headerlink" title="devices"></a>devices</h4><p>指定设备映射关系，例如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">devices:</span><br><span class="line">    - &quot;/dev/ttyUSB1:/dev/ttyUSB0&quot;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">devices:</span><br><span class="line">    - "/dev/ttyUSB1:/dev/ttyUSB0"</span><br></pre></td></tr></tbody></table></figure>
 
 <h4 id="extends"><a href="#extends" class="headerlink" title="extends"></a>extends</h4><p>基于其它模板文件进行扩展。例如，对于webapp服务定义了一个基础模板文件为common.yml</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># common.yml</span><br><span class="line">webapp:</span><br><span class="line">    build: ./webapp</span><br><span class="line">    environment:</span><br><span class="line">        - DEBUG=false</span><br><span class="line">        - SEND_EMAILS=false</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># common.yml</span><br><span class="line">webapp:</span><br><span class="line">    build: ./webapp</span><br><span class="line">    environment:</span><br><span class="line">        - DEBUG=false</span><br><span class="line">        - SEND_EMAILS=false</span><br></pre></td></tr></tbody></table></figure>
 
 <p>再编写一个新的development.yml文件，使用common.yml中的webapp服务进行扩展</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"># development.yml</span><br><span class="line">web:</span><br><span class="line">    extends:</span><br><span class="line">        file: common.yml</span><br><span class="line">        service: webapp</span><br><span class="line">    ports:</span><br><span class="line">        - &quot;8000:8000&quot;</span><br><span class="line">    links:</span><br><span class="line">        - db</span><br><span class="line">    environment:</span><br><span class="line">        - DEBUG=true</span><br><span class="line">db:</span><br><span class="line">    image: mysql</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"># development.yml</span><br><span class="line">web:</span><br><span class="line">    extends:</span><br><span class="line">        file: common.yml</span><br><span class="line">        service: webapp</span><br><span class="line">    ports:</span><br><span class="line">        - "8000:8000"</span><br><span class="line">    links:</span><br><span class="line">        - db</span><br><span class="line">    environment:</span><br><span class="line">        - DEBUG=true</span><br><span class="line">db:</span><br><span class="line">    image: mysql</span><br></pre></td></tr></tbody></table></figure>
 
 <p>后者会自动继承common.yml中的webapp服务及环境变量定义。<br>extends限制如下：<br>A、要避免出现循环依赖<br>B、extends不会继承links和volumes_from中定义的容器和数据卷资源<br>推荐在基础模板中只定义一些可以共享的镜像和环境变量，在扩展模板中具体指定应用变量、链接、数据卷等信息</p>
 <h4 id="external-links"><a href="#external-links" class="headerlink" title="external_links"></a>external_links</h4><p>链接到docker-compose.yml外部的容器，可以是非Compose管理的外部容器。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">external_links:</span><br><span class="line">    - redis_1</span><br><span class="line">    - project_db_1:mysql</span><br><span class="line">    - project_db_1:postgresql</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">external_links:</span><br><span class="line">    - redis_1</span><br><span class="line">    - project_db_1:mysql</span><br><span class="line">    - project_db_1:postgresql</span><br></pre></td></tr></tbody></table></figure>
 
 <h4 id="labels-1"><a href="#labels-1" class="headerlink" title="labels"></a>labels</h4><p>为容器添加Docker元数据（metadata）信息。例如可以为容器添加辅助说明信息</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">labels：</span><br><span class="line">    com.startupteam.description: &quot;webapp for a strtup team&quot;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">labels：</span><br><span class="line">    com.startupteam.description: "webapp for a strtup team"</span><br></pre></td></tr></tbody></table></figure>
 
 <h4 id="log-driver"><a href="#log-driver" class="headerlink" title="log_driver"></a>log_driver</h4><p>指定日志驱动类型。目前支持三种日志驱动类型</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">log_driver: &quot;json-file&quot;</span><br><span class="line">log_driver: &quot;syslog&quot;</span><br><span class="line">log_driver: &quot;none&quot;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">log_driver: "json-file"</span><br><span class="line">log_driver: "syslog"</span><br><span class="line">log_driver: "none"</span><br></pre></td></tr></tbody></table></figure>
 
 <h4 id="log-opt"><a href="#log-opt" class="headerlink" title="log_opt"></a>log_opt</h4><p>日志驱动的相关参数</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">log_driver: &quot;syslog&quot;log_opt: </span><br><span class="line">    syslog-address: &quot;tcp://192.168.0.42:123&quot;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">log_driver: "syslog"log_opt: </span><br><span class="line">    syslog-address: "tcp://192.168.0.42:123"</span><br></pre></td></tr></tbody></table></figure>
 
 <h4 id="network-mode"><a href="#network-mode" class="headerlink" title="network_mode"></a>network_mode</h4><p>设置网络模式</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">network_mode: &quot;bridge&quot;</span><br><span class="line">network_mode: &quot;host&quot;</span><br><span class="line">network_mode: &quot;none&quot;</span><br><span class="line">network_mode: &quot;service:[service name]&quot;</span><br><span class="line">network_mode: &quot;container:[container name/id]&quot;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">network_mode: "bridge"</span><br><span class="line">network_mode: "host"</span><br><span class="line">network_mode: "none"</span><br><span class="line">network_mode: "service:[service name]"</span><br><span class="line">network_mode: "container:[container name/id]"</span><br></pre></td></tr></tbody></table></figure>
 
 <h4 id="net"><a href="#net" class="headerlink" title="net"></a>net</h4><p>设置网络模式</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">net: &quot;bridge&quot;</span><br><span class="line">net: &quot;none&quot;</span><br><span class="line">net: &quot;host&quot;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">net: "bridge"</span><br><span class="line">net: "none"</span><br><span class="line">net: "host"</span><br></pre></td></tr></tbody></table></figure>
 
 <h4 id="security-opt"><a href="#security-opt" class="headerlink" title="security_opt"></a>security_opt</h4><p>指定容器模板标签（label）机制的默认属性（用户、角色、类型、级别等）。例如，配置标签的用户名和角色名</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">security_opt:</span><br><span class="line">    - label:user:USER</span><br><span class="line">    - label:role:ROLE</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">security_opt:</span><br><span class="line">    - label:user:USER</span><br><span class="line">    - label:role:ROLE</span><br></pre></td></tr></tbody></table></figure>
 
 <h4 id="环境变量"><a href="#环境变量" class="headerlink" title="环境变量"></a>环境变量</h4><p>环境变量可以用来配置Docker-Compose的行为。<br>COMPOSE_PROJECT_NAME<br>设置通过Compose启动的每一个容器前添加的项目名称，默认是当前工作目录的名字。<br>COMPOSE_FILE<br>设置docker-compose.yml模板文件的路径。默认路径是当前工作目录。<br>DOCKER_HOST<br>设置Docker daemon的地址。默认使用unix:///var/run/docker.sock。 DOCKER_TLS_VERIFY<br>如果设置不为空，则与Docker daemon交互通过TLS进行。<br>DOCKER_CERT_PATH<br>配置TLS通信所需要的验证(ca.pem、cert.pem 和 key.pem)文件的路径，默认是 ~/.docker </p>
 <p>指令部分整理自以下网友，感谢</p>
 <p><a href="https://www.jianshu.com/p/ba77c7bdf03e" target="_blank" rel="noopener">https://www.jianshu.com/p/ba77c7bdf03e</a></p>
 <p><a href="https://www.jianshu.com/p/7d1fe36ba45c" target="_blank" rel="noopener">https://www.jianshu.com/p/7d1fe36ba45c</a></p>
 <p><a href="https://blog.51cto.com/9291927/2310444" target="_blank" rel="noopener">https://blog.51cto.com/9291927/2310444</a></p>
-
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
       
     </div>
 
@@ -875,7 +893,7 @@
   </li>
   <li class="post-copyright-author">
     <strong>最后更新:</strong>
-    2019年05月18日 - 13:05
+    2019年05月19日 - 21:05
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
@@ -1192,18 +1210,6 @@
 
       
 
-      
-      <script type="text/javascript" charset="utf-8" src="/js/tagcloud.js"></script>
-      <script type="text/javascript" charset="utf-8" src="/js/tagcanvas.js"></script>
-      <div class="widget-wrap">
-          <div id="myCanvasContainer" class="widget tagcloud">
-              <canvas width="250" height="250" id="resCanvas" style="width=100%">
-                  <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Games/">Games</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PS3/">PS3</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/">docker</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker-compose/">docker-compose</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown/">markdown</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nfs/">nfs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随笔/">随笔</a><span class="tag-list-count">1</span></li></ul>
-              </canvas>
-          </div>
-      </div>
-      
-
     </div>
   </aside>
   
@@ -1408,7 +1414,7 @@
     appId: 'otqPeg76YvysgXfg0AoRfxkW-gzGzoHsz',
     appKey: 'R6kjizLhwrr3J7cImLdbXeTr',
     placeholder: '请带上邮箱留言、我收到可能回复呃 o(∩_∩)o ~ 如果你是程序员，可以使用最下面的github账号留言也可以哦~',
-    avatar: 'mm',
+    avatar: 'mp',
     meta: guest,
     pageSize: '10' || 10,
     visitor: true,
