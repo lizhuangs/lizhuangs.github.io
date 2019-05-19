@@ -1956,7 +1956,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #4f61ec;
+  background: #faff12;
 }
 .feed-link,
 .chat {
@@ -2841,7 +2841,7 @@ embed {
   width: 100%;
   background-image: linear-gradient(90deg, #f79533 0, #f37055 15%, #ef4e7b 30%, #a166ab 44%, #5073b8 58%, #1098ad 72%, #07b39b 86%, #6dba82 100%);
 }
-code {
+code1 {
   display: inline-block;
   margin: auto 2px;
   padding-right: 5px;
@@ -2854,6 +2854,19 @@ code {
   overflow-wrap: break-word;
   word-wrap: break-word;
   font-size: 12px;
+}
+code {
+  margin: 2px;
+  padding: 3px 5px;
+  border: 1.5px dashed #d8d6d6;
+  border-radius: 2px;
+  background: #f6f6f6;
+  color: #706f6f;
+  text-shadow: 0 0 3px #cacaca;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  font-size: 13px;
+  line-height: 1;
 }
 .menu {
   margin-top: 20px;
@@ -2906,6 +2919,10 @@ code {
     padding-right: 1em;
   }
 }
+.post-body ul>li,
+.post-body ol>li {
+  line-height: 30px;
+}
 .menu .menu-item .fa {
   margin-right: 5px;
   width: auto;
@@ -2913,6 +2930,14 @@ code {
 .site-subtitle {
   color: #fff;
   font-size: 14px;
+}
+.post-block {
+/* 这个会使博客字体更清晰 */
+  text-shadow: #cdcdcd 0 0 1px;
+}
+.post-body {
+/* 文字间隔 */
+  letter-spacing: 1px;
 }
 @media (max-width: 567px) {
   .header-inner {
@@ -2933,9 +2958,6 @@ code {
   }
   .posts-expand .post-meta {
     margin: 3px 0 10px 0 !important;
-  }
-  .post-block {
-    padding: 8px 0 !important;
   }
   .post-body h2,
   .post-body h3,
@@ -2977,4 +2999,47 @@ code {
   .post-nav {
     padding-bottom: 2px;
   }
+}
+body {
+  cursor: url("/images/default.cur"), auto !important;
+}
+.avatar img,
+.search-result,
+.nav2,
+.archive-article,
+.waves-effect,
+.reward-toggle,
+.brand-wrap,
+.post-card-title,
+a,
+button {
+  cursor: url("/images/pointer.cur"), auto !important;
+}
+.github-emoji {
+  cursor: url("/images/default.cur"), auto !important;
+}
+img {
+  cursor: -webkit-zoom-in;
+  cursor: -moz-zoom-in;
+  cursor: zoom-in;
+}
+body >img {
+  cursor: -webkit-zoom-out;
+  cursor: -moz-zoom-out;
+  cursor: zoom-out;
+}
+.waves-button,
+.waves-button:hover,
+.waves-button:visited,
+.waves-button-input {
+  cursor: url("/images/pointer.cur"), auto !important;
+}
+input[type="button"],
+input[type="submit"],
+input[type="search"],
+input[type="reset"] {
+  cursor: url("/images/pointer.cur"), auto !important;
+}
+.motto span {
+  cursor: url("/images/pointer.cur"), auto !important;
 }
