@@ -173,7 +173,7 @@
 <meta property="og:site_name" content="tudou&#39;s Blog">
 <meta property="og:description" content="You got a dream, you gotta protect it. People can’t do something themselves,they wanna tell you you can’t do it.If you want something, go get it.     1234567891011&amp;#123;  name: &apos;tudou&apos;  profession:">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-05-18T16:42:24.893Z">
+<meta property="og:updated_time" content="2019-05-19T05:18:29.598Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="tudou&#39;s Blog">
 <meta name="twitter:description" content="You got a dream, you gotta protect it. People can’t do something themselves,they wanna tell you you can’t do it.If you want something, go get it.     1234567891011&amp;#123;  name: &apos;tudou&apos;  profession:">
@@ -489,7 +489,6 @@
 
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  name: <span class="string">'tudou'</span></span><br><span class="line">  profession: <span class="string">'Developer'</span>,</span><br><span class="line">  experience: <span class="string">'8 Years'</span>,</span><br><span class="line">  address: <span class="string">'帝都'</span>,</span><br><span class="line">  description: <span class="string">'记录点滴的小屋'</span>,</span><br><span class="line"></span><br><span class="line">  hobby: [</span><br><span class="line">    [<span class="string">'Swimming'</span>, <span class="string">'Riding'</span>, <span class="string">'Skiing'</span>, <span class="string">'Roller skating'</span>, <span class="string">'Coding'</span>]</span><br><span class="line">  ] </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=186252&auto=1&height=66"></iframe>
 
         
       </div>
@@ -512,9 +511,11 @@
 
   
     <div class="comments" id="comments">
-      
-        <div id="gitment-container"></div>
-      
+    </div>
+  
+
+  
+    <div class="comments" id="gitalk-container">
     </div>
 
   
@@ -939,37 +940,32 @@
 
 
   
-    <!-- LOCAL: You can save these files to your site and update links -->
+    
 
-  
-  <script src="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/gitmint.browser.js"></script>
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/default.css">
-<!-- END LOCAL -->
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+
+
+<script src="//cdn.jsdelivr.net/npm/js-md5@0.7.3/src/md5.min.js"></script>
 
 <script>
-  function renderGitment() {
-    var gitment = new Gitmint({
-      id: window.location.pathname,
-      owner: 'lizhuangs',
-      repo: 'lizhuangs.github.io',
-      
-        lang: '' || navigator.language || navigator.systemLanguage || navigator.userLanguage,
-      
-      oauth: {
-      
-      
-        client_secret: '83d7eb5ad6b5c8842e439fc6d70d7b105e273db9',
-      
-        client_id: '1b14852a341fed56e583'
-      }
-    });
-    gitment.render('gitment-container');
-  }
-
-  
-    renderGitment();
-  
+  var gitalk = new Gitalk({
+    clientID: '1b14852a341fed56e583',
+    clientSecret: '83d7eb5ad6b5c8842e439fc6d70d7b105e273db9',
+    repo: 'lizhuangs.github.io',
+    owner: 'lizhuangs',
+    admin: ['lizhuangs'],
+    id: md5(location.pathname),
+    
+      language: 'zh-CN',
+    
+    distractionFreeMode: 'true'
+  });
+  gitalk.render('gitalk-container');
 </script>
 
   
